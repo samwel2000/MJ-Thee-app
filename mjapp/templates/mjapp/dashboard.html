@@ -1,0 +1,14 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+    <div class="content">
+        <div class="home-link">
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+        <div class="dashboard">
+            <h1>I am dashboard</h1>
+            <h2>Still cooking something for you beautiful</h2>
+        </div>
+    </div>
+{% endblock %}

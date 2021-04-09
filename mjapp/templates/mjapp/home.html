@@ -1,0 +1,36 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block contents %}
+    <div class="functions">
+       <div class="function">
+           <a href="{% url 'dashboard' %}">
+               <img src="{% static 'images/dashboard.png' %}" alt="">
+               <p class="text-center">Dashboard</p>
+           </a>
+       </div>
+        <div class="function">
+            <a href="{% url 'service' %}">
+               <img src="{% static 'images/service.png' %}" alt="">
+                <p class="text-center">Services</p>
+            </a>
+       </div>
+        <div class="function">
+            <a href="{% url 'purchase' %}">
+               <img src="{% static 'images/purchase.png' %}" alt="">
+               <p class="text-center">Purchases</p>
+            </a>
+       </div>
+        <div class="function">
+            <a href="{% url 'serviceOffered' %}">
+               <img src="{% static 'images/offered.png' %}" alt="">
+               <p class="text-center">Offered</p>
+            </a>
+       </div>
+        <div class="function">
+            <a href="{% url 'booking' %}">
+               <img src="{% static 'images/booking.png' %}" alt="">
+               <p class="text-center">Bookings</p>
+            </a>
+       </div>
+    </div>
+{% endblock %}
