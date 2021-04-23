@@ -1,0 +1,38 @@
+{% load static %}
+  <div class="functions">
+     <div class="function">
+         <a href="{% url 'home' %}">
+             <!-- <img src="{% static 'images/dashboard.png' %}" alt=""> -->
+             <p class="text-center function-icon"><i class="fas fa-home"></i></p>
+             <p class="text-center">Home</p>
+         </a>
+     </div>
+      <div class="function">
+          <a href="{% url 'service' %}">
+             <!-- <img src="{% static 'images/service.png' %}" alt=""> -->
+              <p class="text-center function-icon"><i class="fas fa-file-alt"></i></p>
+              <p class="text-center"> Services</p>
+          </a>
+     </div>
+      <div class="function">
+          <a href="{% url 'purchase' %}">
+             <!-- <img src="{% static 'images/purchase.png' %}" alt=""> -->
+             <p class="text-center function-icon"><i class="fas fa-shopping-bag"></i> </p>
+             <p class="text-center"> Purchases</p>
+          </a>
+     </div>
+     <div class="function">
+         <a href="{% url 'booking' %}">
+            <!-- <img src="{% static 'images/booking.png' %}" alt=""> -->
+            <p class="text-center function-icon"><i class="fas fa-book"></i></p>
+            <p class="text-center"> Bookings</p>
+         </a>
+    </div>
+    <div class="function">
+        <a href="{% url 'serviceOffered' %}">
+           <!-- <img src="{% static 'images/offered.png' %}" alt=""> -->
+           <p class="text-center function-icon"><i class="fas fa-magic"></i></p>
+           <p class="text-center"> Delivery</p>
+        </a>
+     </div>
+  </div>

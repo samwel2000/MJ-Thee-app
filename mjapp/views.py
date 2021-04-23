@@ -6,11 +6,11 @@ from django.views.generic import TemplateView
 from mjapp.forms import PurchaseForm, ServiceForm, BookingForm, ServiceOfferedForm
 from mjapp.models import Purchases, Services, Bookings, ServiceOffered
 
-@login_required
-def index(request):
-    template_name = 'mjapp/home.html'
-    context = {}
-    return render(request, template_name, context)
+# @login_required
+# def index(request):
+#     template_name = 'mjapp/home.html'
+#     context = {}
+#     return render(request, template_name, context)
 
 @login_required
 def dashboard(request):
@@ -68,6 +68,32 @@ def booking(request):
         'bookings':get_bookings,
     }
     return render(request, template_name, context)
+
+@login_required
+def editBooking(request, id):
+    get_booking = Bookings.objects.get(pk=id)
+    form = BookingForm(instance=get_booking)
+    if request.method=='POST':
+        form = BookingForm(request.POST, instance=get_booking)
+        if form.is_valid():
+            form.save()
+            messages.success( request, f'Query ok beautiful, booking updated succesifully')
+            return redirect('booking')
+    get_bookings = Bookings.objects.all().order_by('-date')
+    template_name = 'mjapp/booking.html'
+    context = {
+        'form':form,
+        'update':'update',
+        'bookings':get_bookings,
+    }
+    return render(request, template_name, context)
+
+@login_required
+def cancelBooking(request, id):
+    get_booking = Bookings.objects.get(pk=id)
+    get_booking.delete()
+    messages.info(request, f'Service booking deleted succesifully')
+    return redirect('booking')
 
 @login_required
 def markComplete(request, id):

@@ -2,10 +2,10 @@
 {% load static %}
 {% load humanize %}
 {% block contents %}
-    <div class="content pt-5">
-        <div class="home-link">
+    <div class="content">
+        <!-- <div class="home-link">
             <a href="{% url 'home' %}">Back to Home</a>
-        </div>
+        </div> -->
         <div class="accordion accordion-flush" id="accordionFlushExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
@@ -13,7 +13,7 @@
                 Booking form
               </button>
             </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseOne" class="accordion-collapse collapse {% if update %}show{% endif %}" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
               <div class="form p-4">
                    <form action="" method="post">
                        {% csrf_token %}
@@ -21,7 +21,7 @@
                            {{ form }}
                        </div>
                        <div class="form-group">
-                           <button type="submit">Add booking</button>
+                           <button type="submit">{% if not update %}Add booking{% else %}Edit booking{% endif %}</button>
                        </div>
                    </form>
                </div>
@@ -33,39 +33,43 @@
                 Bookings list
               </button>
             </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-              <div class="table-content p-4 table-responsive">
-                    <table class="table table-striped" id="table_id">
-                        <thead>
-                            <tr>
-                                <th>S/NO</th>
-                                <th>customer name</th>
-                                <th>Date</th>
-                                <th>status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for p in bookings %}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ p.name }}</td>
-                                <td>{{ p.date| naturalday }}</td>
-                                <td>{{ p.completed_status }}</td>
-                                <td>
-                                    {% if not p.status %}
-                                    <a href="{% url 'markComplete' p.id %}" class="btn btn-outline-success">Mark complete</a>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="5" style="color:red;font-weight:600;text-align:center;">No bookings added yet</td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse {% if not update %}show{% endif %}" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <div class="p-4">
+                <div class="table-content table-responsive">
+                  <table class="table table-striped" id="table_id">
+                    <thead>
+                      <tr>
+                        <th>S/NO</th>
+                        <th>customer name</th>
+                        <th>Date</th>
+                        <th>status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for p in bookings %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.date| naturalday }}</td>
+                        <td>{{ p.completed_status }}</td>
+                        <td>
+                          {% if not p.status %}
+                          <a href="{% url 'markComplete' p.id %}" class="btn btn-outline-success"><i class="fas fa-check"></i></a>
+                          <a href="{% url 'editBooking' p.id %}" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                          <a href="{% url 'cancelBooking' p.id %}" class="btn btn-outline-danger"><i class="fas fa-times"></i></a>
+                          {% endif %}
+                        </td>
+                      </tr>
+                      {% empty %}
+                      <tr>
+                        <td colspan="5" style="color:red;font-weight:600;text-align:center;">No bookings added yet</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
           </div>
         </div>
