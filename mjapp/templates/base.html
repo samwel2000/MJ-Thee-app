@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/w3.css' %}">
-    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/datatable.min.css' %}" />
-    <title>MJ thee salon</title>
+    <title>MJ the stylist</title>
     <link href="{% static 'css/toastr.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="outer-container">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="w3-card profile">
+                    <div class="profile">
                         <div class="heading">
-                            <h1 class="logo">MJ Thee salon</h1>
+                            <h1 class="logo">MJ <sub><span>the stylist</span></sub></h1>
                         </div>
                         <div class="profile-photo">
                             <img src="{% static 'images/profile.jpg' %}" alt="">
@@ -31,10 +31,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="operations">
+                <div class="col-md-6">
+                    <div class="">
                         {% block contents %}{% endblock %}
                     </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="operations">
+                      {% include './mjapp/_home.html'%}
+                  </div>
                 </div>
             </div>
         </div>

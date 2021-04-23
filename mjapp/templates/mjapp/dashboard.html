@@ -3,12 +3,33 @@
 {% load humanize %}
 {% block contents %}
     <div class="content">
-        <div class="home-link">
-            <a href="{% url 'home' %}">Back to Home</a>
+      <div class="dashboard">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="general-stat d-flex">
+              <h3>{% if not profit and loss %}Profit{% endif %}{% if profit %}Profit{% else %}Loss{% endif %}:</h3>
+              <p>{% if not profit and loss %}0.00/={% endif %}{% if profit %}{{profit|intcomma}}/={% else %}{{loss|intcomma}}/={% endif %}</p>
+            </div>
+          </div>
         </div>
-        <div class="dashboard">
-            <h1>I am dashboard</h1>
-            <h2>Still cooking something for you beautiful</h2>
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <div class="stat-box">
+              <div class="stat">
+                <h3>Total operating cost:</h3>
+                <p>{% if purchase_total %}{{purchase_total.amount__sum|intcomma}}/={% else %}0.00/={% endif %}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="stat-box">
+              <div class="stat">
+                <h3>Amount received:</h3>
+                <p>{% if offered_total %}{{offered_total.amount__sum|intcomma}}/={% else %}0.00/={% endif %}</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 {% endblock %}
