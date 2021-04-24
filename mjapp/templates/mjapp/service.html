@@ -13,7 +13,7 @@
                 Service form
               </button>
             </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseOne" class="accordion-collapse collapse {% if update %}show{% endif %}" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
               <div class="form p-4">
                    <form action="" method="post">
                        {% csrf_token %}
@@ -21,7 +21,7 @@
                            {{ form }}
                        </div>
                        <div class="form-group">
-                           <button type="submit">Add service</button>
+                           <button type="submit">{% if not update %}Add service{% else %}Edit service{% endif %}</button>
                        </div>
                    </form>
                </div>
@@ -33,7 +33,7 @@
                 Services list
               </button>
             </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseTwo" class="accordion-collapse collapse {% if not update %}show{% endif %}" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
               <div class="p-4">
                 <div class="table-content table-responsive">
                   <table class="table table-striped" id="table_id">
@@ -43,6 +43,7 @@
                         <th>Service name</th>
                         <th>Amount</th>
                         <th>Date</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,10 @@
                         <td>{{ p.name }}</td>
                         <td>{{ p.amount }}</td>
                         <td>{{ p.date| naturalday }}</td>
+                        <td>
+                          <a href="{% url 'editService' p.id %}" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                          <a href="{% url 'deleteService' p.id %}" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                        </td>
                       </tr>
                       {% empty %}
                       <tr>

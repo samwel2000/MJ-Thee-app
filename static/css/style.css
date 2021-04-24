@@ -186,9 +186,10 @@ form button:hover {
     height:  15rem;
 }
 .profile-photo img {
-    width: 90%;
+    width: 100%;
     border-radius: 50%;
-    object-fit: cover;
+    border: 1px solid #000;
+    object-fit:cover;
 }
 .logout {
     margin: 2rem 3rem 0 3rem;
@@ -243,6 +244,52 @@ form button:hover {
     bottom; 0px;
     display: flex;
     justify-content: center;
+}
+.general-stat {
+  background: #eee;
+  padding: 1rem 2rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 25px;
+}
+.stat {
+  background: #eee;
+  padding: 1rem 2rem;
+}
+.dashboard .col-md-12 {
+  border: 2px solid #eee;
+  padding: 0.5rem;
+  border-radius: 32px;
+}
+.dashboard .stat-box {
+  border: 2px solid #eee;
+  padding: 0.5rem;
+}
+@media only screen and (min-width:769px) {
+  .dashboard .col-md-6:first-child {
+    /* margin-right: 1px; */
+  }
+}
+.dashboard h3 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin: 0;
+  color: #000;
+  font-family: 'Comfortaa', cursive !important;
+}
+.dashboard {
+  margin-top: 4rem;
+  border: 3.25px solid #eee;
+  padding: 2rem;
+  border-radius: 15px;
+}
+.dashboard p {
+  font-weight: bolder;
+  font-size: 2.5rem;
+  opacity: 0.85;
+  margin: 0;
+  color: #000;
+  font-family: 'Comfortaa', cursive !important;
 }
 @media screen and (min-width:768px) {
     div.profile {

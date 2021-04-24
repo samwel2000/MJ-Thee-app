@@ -29,7 +29,7 @@ class Services(models.Model):
 
 class ServiceOffered(models.Model):
     name = models.CharField(max_length=200, verbose_name="Customer name")
-    service = models.ForeignKey(Services, on_delete=models.DO_NOTHING, verbose_name="Service offered")
+    service = models.ForeignKey(Services, on_delete=models.PROTECT, verbose_name="Service offered")
     amount = models.PositiveIntegerField(verbose_name="Total amount")
     date = models.DateField(verbose_name="Date of delivery")
     payment = models.BooleanField(default=False, verbose_name="payed")
