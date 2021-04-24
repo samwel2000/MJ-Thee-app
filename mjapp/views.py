@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
 from django.db.models import Sum
 
 from mjapp.forms import PurchaseForm, ServiceForm, BookingForm, ServiceOfferedForm
@@ -13,14 +12,14 @@ def dashboard(request):
     get_offered_sum = ServiceOffered.objects.all().aggregate(Sum('amount'))
     profit = None
     loss = None
-    if get_purchase_sum and get_offered_sum:
+    if get_purchase_sum['amount__sum'] and get_offered_sum['amount__sum']:
         if get_purchase_sum['amount__sum'] <= get_offered_sum['amount__sum']:
             profit = get_offered_sum['amount__sum'] - get_purchase_sum['amount__sum']
         else:
             loss = get_purchase_sum['amount__sum'] - get_offered_sum['amount__sum']
-    elif get_purchase_sum:
+    elif get_purchase_sum['amount__sum']:
         loss = get_purchase_sum['amount__sum']
-    elif get_offered_sum:
+    elif get_offered_sum['amount__sum']:
         profit = get_offered_sum['amount__sum']
     else:
         profit = 0

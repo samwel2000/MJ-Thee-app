@@ -17,11 +17,8 @@ class PurchasesAdmin(admin.ModelAdmin):
 admin.site.register(Purchases, PurchasesAdmin)
 
 
-class ServiceOfferedAdmin(admin.ModelAdmin):
-    list_display = ['name', 'service', 'amount', 'date', 'payment']
 
-
-admin.site.register(ServiceOffered, ServiceOfferedAdmin)
+admin.site.register(ServiceOffered)
 
 
 class BookingsAdmin(admin.ModelAdmin):
