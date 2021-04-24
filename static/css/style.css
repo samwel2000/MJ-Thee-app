@@ -94,16 +94,30 @@ form input {
     outline: none;
 }
 form input[type="checkbox"] {
-    display: block;
+    /* display: block;
     width: 50%;
     margin-top: -2rem;
     margin-bottom: 2rem;
     padding: 0.75rem 1rem;
     font-size: 2rem;
-    line-height: 3rem;
+    line-height: 3rem; */
+    /* display: inline-block;inl */
+    width: 10%;
+    margin-left: -2rem;
+}
+form #id_payment {
+    display: block;
+    width: 70%;
+    margin-top: -2.15rem;
+    margin-bottom: 2rem;
+    padding: 0.75rem 1rem;
+    font-size: 2rem;
+    line-height: 3rem; */
 }
 form label {
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
     font-size: 1rem;
     margin: 1rem;
@@ -183,11 +197,11 @@ form button:hover {
     justify-content: center;
     margin: 1.5rem auto;
     width: 60%;
-    height:  15rem;
+    height:  20rem;
 }
 .profile-photo img {
     width: 100%;
-    border-radius: 50%;
+    border-radius: 100%;
     border: 1px solid #000;
     object-fit:cover;
 }

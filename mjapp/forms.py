@@ -35,9 +35,13 @@ class BookingForm(forms.ModelForm):
         }
 
 class ServiceOfferedForm(forms.ModelForm):
+    service = forms.ModelMultipleChoiceField(
+        queryset=Services.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
     class Meta:
         model = ServiceOffered
-        fields = '__all__'
+        fields = ['name','service','amount','date','payment']
         widgets = {
             'date': forms.DateInput(
                 attrs={

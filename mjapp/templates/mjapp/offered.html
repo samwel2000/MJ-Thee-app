@@ -53,7 +53,7 @@
                       <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ p.name }}</td>
-                        <td>{{ p.service.name }}</td>
+                        <td>{% for s in p.service.all %}{{ s.name }},{% endfor %}</td>
                         <td>{{ p.amount }}</td>
                         <td>{{ p.date| naturalday }}</td>
                         <td>{{ p.payment_status }}</td>
