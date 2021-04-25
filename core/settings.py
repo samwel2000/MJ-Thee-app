@@ -8,7 +8,7 @@ SECRET_KEY = '_j608zbjup(-!d0-m1!4d6!e4sp(+pn=%^66)dhn05xc+isy(!'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mjtheesalon.pythonanywhere.com','localhost']
 
 
 INSTALLED_APPS = [
